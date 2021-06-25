@@ -1,6 +1,6 @@
 <template>
 	<view>
-		主页
+		订单
 	</view>
 </template>
 
@@ -8,18 +8,15 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
-
+			
 		}
 	}
 </script>
 
 <style>
-	
+
 </style>
