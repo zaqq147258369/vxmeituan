@@ -1,6 +1,6 @@
 <template>
 	<view>
-		我的测试111
+		我的
 	</view>
 </template>
 
