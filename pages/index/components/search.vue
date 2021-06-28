@@ -15,7 +15,7 @@
 		</view>
 		<!-- 自定义轮播 -->
 		<view class="swiper-view">
-			<swiper :autoplay="false" :interval="2000" :duration="1000">
+			<swiper :autoplay="false" :interval="2000" :duration="1000" @change="bannerfun">
 				<block v-for="(item,index) in lable" :key="index">
 					<swiper-item>
 						<view class="swiper-item">
@@ -32,7 +32,7 @@
 			<!-- 指示点 -->
 			<view class="instruct-view">
 				<block v-for="(item,index) in instructdata" :key="index">
-					<view class="instruct">{{item}}</view>
+					<view class="instruct" :class="{active:index == num}">{{item}}</view>
 				</block>
 			</view>
 		</view>
@@ -43,6 +43,7 @@
 	export default {
 		data() {
 			return {
+				num:0,
 				// 面板指示点
 				instructdata:['',''],
 				//轮播数组
@@ -133,7 +134,10 @@
 			}
 		},
 		methods: {
-
+			bannerfun(e){
+				console.log(e.detail.current);
+				this.num = e.detail.current
+			}
 		}
 	}
 </script>
@@ -203,7 +207,7 @@
 	}
 	/* 每个图标样式 */
 	.conteng-img {
-		width: 134rpx;
+		width: 132rpx;
 		margin: 6rpx;
 		position: relative;
 		text-align: center;
@@ -233,5 +237,8 @@
 		width: 30rpx;
 		border-radius: 50rpx;
 		margin: 0 10rpx;
+	}
+	.active{
+		background-color: #F0AD4E !important;
 	}
 </style>
