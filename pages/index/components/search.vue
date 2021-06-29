@@ -45,7 +45,7 @@
 			return {
 				num:0,
 				// 面板指示点
-				instructdata:['','','',''],
+				instructdata:['',''],
 				//轮播数组
 				lable: [
 					[{
