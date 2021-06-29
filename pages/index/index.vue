@@ -33,7 +33,7 @@
 			// 为你优选
 			preference(){
 				uni.request({
-					url:'http://meituan.thexxdd.cn/api/forshop/getprefer',
+					url:'https://meituan.thexxdd.cn/api/forshop/getprefer',
 					method:'GET',
 				})
 				.then((res)=>{
