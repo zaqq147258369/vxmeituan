@@ -29,11 +29,23 @@
 				title: 'Hello'
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
-
+			// 为你优选
+			preference(){
+				uni.request({
+					url:'http://meituan.thexxdd.cn/api/forshop/getprefer',
+					method:'GET',
+				})
+				.then((res)=>{
+					console.log(res)
+				})
+				.catch((err)=>{
+					console.log(err)
+				})
+			}
+		},
+		mounted(){
+			this.preference();
 		}
 	}
 </script>

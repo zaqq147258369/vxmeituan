@@ -7,7 +7,7 @@
 			<view  class="prefer-dis">
 				<block v-for="(item,index) in preferdata" :key="index">
 					<view class="prefer-view">
-						<image src="item.image" mode="aspectFill"></image>
+						<image :src="item.image" mode="aspectFill"></image>
 						<text>{{item.title}}</text>
 						<text>{{item.lable}}</text>
 					</view>
@@ -21,7 +21,23 @@
 	export default {
 		data() {
 			return {
-				
+				preferdata: [
+					{
+						'image':'../../../static/coen/caia.jpg',
+						'title':'特别推荐',
+						'lable':'晚餐必备'
+					},
+					{
+						'image':'../../../static/coen/caib.jpg',
+						'title':'特别推荐',
+						'lable':'晚餐必备'
+					},
+					{
+						'image':'../../../static/coen/caic.jpg',
+						'title':'特别推荐',
+						'lable':'晚餐必备'
+					}
+				]
 			}
 		},
 		methods: {
