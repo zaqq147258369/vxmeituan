@@ -39,7 +39,7 @@
 					method:'GET',
 				})
 				.then((res)=>{
-					console.log(res)
+					
 					this.perferdata = res[1].data
 				})
 				.catch((err)=>{
