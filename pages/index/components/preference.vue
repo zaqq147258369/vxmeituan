@@ -19,25 +19,11 @@
 
 <script>
 	export default {
+		props:{
+			preferdata:Array
+		},
 		data() {
 			return {
-				preferdata: [
-					{
-						'image':'../../../static/coen/caia.jpg',
-						'title':'特别推荐',
-						'lable':'晚餐必备'
-					},
-					{
-						'image':'../../../static/coen/caib.jpg',
-						'title':'特别推荐',
-						'lable':'晚餐必备'
-					},
-					{
-						'image':'../../../static/coen/caic.jpg',
-						'title':'特别推荐',
-						'lable':'晚餐必备'
-					}
-				]
 			}
 		},
 		methods: {

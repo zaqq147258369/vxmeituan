@@ -1,7 +1,7 @@
 <template>
 	<view class="contenting">
 		<Serach></Serach>
-		<Preference></Preference>
+		<Preference :preferdata='perferdata'></Preference>
 		<Title></Title>
 		<Delicacy></Delicacy>
 		<Takeout></Takeout>
@@ -26,7 +26,9 @@
 		}, 
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				//为你优选
+				perferdata:[]
 			}
 		},
 		methods: {
@@ -38,6 +40,7 @@
 				})
 				.then((res)=>{
 					console.log(res)
+					this.perferdata = res[1].data
 				})
 				.catch((err)=>{
 					console.log(err)
