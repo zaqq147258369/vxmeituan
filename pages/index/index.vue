@@ -16,6 +16,11 @@
 	import Delicacy from './components/delicacy.vue'
 	import Takeout from './components/takeout.vue'
 	
+	// 引入封装的api接口
+	import {listing} from '../../api/api.js'
+	//引入请求地址
+	import {getpreferurl} from '../../api/request.js'
+	
 	export default {
 		components: {
 			Serach,
@@ -34,16 +39,13 @@
 		methods: {
 			// 为你优选
 			preference(){
-				uni.request({
-					url:'https://meituan.thexxdd.cn/api/forshop/getprefer',
-					method:'GET',
-				})
+				listing(getpreferurl)
 				.then((res)=>{
-					
-					this.perferdata = res[1].data
+					console.log(res);
+					this.perferdata = res[1].data;
 				})
 				.catch((err)=>{
-					console.log(err)
+					console.log(err);
 				})
 			}
 		},
