@@ -2,8 +2,8 @@
 	<view class="contenting">
 		<Serach></Serach>
 		<Preference :preferdata='perferdata'></Preference>
-		<Title></Title>
 		<Delicacy></Delicacy>
+		<Title></Title>
 		<Takeout></Takeout>
 	</view>
 </template>
