@@ -1,10 +1,10 @@
 <template>
 	<view>
-		<view>
+		<view class="zindex">
 			<!-- 筛选区 -->
 			<view class="delica-view">
-				<view class="delica-list delica-grow">
-					<text>综合排序</text>
+				<view class="delica-list delica-grow" @click="multiple()">
+					<text>{{synthesize}}</text>
 					<image src="../../../static/coen/paixu.png" mode="widthFix"></image>
 				</view>
 				<view class="delica-grow">销量高</view>
@@ -19,11 +19,11 @@
 			<!-- 综合排序 -->
 			<view class="sortlist sortliteltle" v-if="drop">
 				<block v-for="(item,index) in sortlist" :key="index">
-					<text>{{item.name}}</text>
+					<text :class="{activeb: index == num}" @click="sortClick(item.name,index)">{{item.name}}</text>
 				</block>
 			</view>
 			<!-- 筛选 -->
-			<view class="sortlist sortlist-view">
+			<view class="sortlist sortlist-view" v-if="sortmen">
 				<block v-for="(item,index) in screendata" :key="index">
 					<view class="sortlist-title">{{item.title}}</view>
 					<view class="sortlist-flex">
@@ -46,6 +46,7 @@
 				</view>
 			</view>
 		</view>
+		<view class="yin" v-if="ying" @click="backClic()"></view>
 	</view>
 </template>
 
@@ -53,7 +54,11 @@
 	export default {
 		data() {
 			return {
+				synthesize:'综合排序',
 				drop: false,
+				sortmen:false,
+				ying:false,
+				num:0,
 				sortlist: [{
 						"name": "综合排序",
 						"screen": "_id",
@@ -117,12 +122,35 @@
 			}
 		},
 		methods: {
-
+			multiple(){
+				this.drop = true;
+				this.backOne();
+			},
+			sortClick(name,index){
+				this.synthesize = name;
+				this.num = index;
+			},
+			backOne(){
+				setTimeout(()=>{
+					this.ying = true;
+				},200)
+			},
+			backClic(){
+				this.ying = false;
+				
+			}
 		}
 	}
 </script>
 
 <style scoped>
+	.zindex{
+		position: absolute;
+		left: 0;
+		right: 0;
+		width: 100%;
+		z-index: 999;
+	}
 	.delica-view image {
 		width: 30rpx;
 		height: 30rpx;
@@ -135,7 +163,7 @@
 		align-items: center;
 		color: #666666;
 		height: 70rpx;
-		/* padding: 0 15rpx; */
+		padding: 0 15rpx;
 		background-color: #ffffff;
 	}
 
@@ -161,12 +189,15 @@
 	.sortliteltle {}
 
 	.sortliteltle text {
-		/* padding: 0 15rpx; */
+		padding: 0 15rpx;
 		display: block;
 		font-size: 30rpx;
 		height: 70rpx;
 		line-height: 70rpx;
 		border-top: 1rpx solid #ededed;
+	}
+	.activeb{
+		color: #f89903 !important;
 	}
 
 	/* 筛选部分----样式 */
@@ -237,5 +268,13 @@
 	.scractive {
 		background-color: #fef6df !important;
 		color: #f29909 !important;
+	}
+	.yin{
+		background-color: rgba(0,0,0,0.5);
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 	}
 </style>
