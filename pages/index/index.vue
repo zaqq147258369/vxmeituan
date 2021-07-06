@@ -3,7 +3,9 @@
 		<Serach></Serach>
 		<Preference :preferdata='perferdata'></Preference>
 		<Title></Title>
-		<Delicacy></Delicacy>
+		<view @click="poll()">
+			<Delicacy :class="{'is_fixed' : is_fixed}" id="boxFixed"></Delicacy>
+		</view>
 		<Takeout></Takeout>
 	</view>
 </template>
@@ -31,7 +33,10 @@
 		}, 
 		data() {
 			return {
-				title: 'Hello',
+				menutop:'',
+				rect:'',
+				is_fixed:false,
+				topdata:'',
 				//为你优选
 				perferdata:[]
 			}
@@ -47,16 +52,50 @@
 				.catch((err)=>{
 					console.log(err);
 				})
-			}
+			},
+			poll(){
+				wx.pageScrollTo({
+					scrollTop:this.topdata,
+					duration:300
+				})
+			},
+		},
+		onLoad(){
+			const quer = wx.createSelectorQuery();
+			quer.select('#boxFixed').boundingClientRect();
+			quer.exec((res)=>{
+				this.menutop = res[0].top
+				this.topdata = res[0].top
+			})
+		},
+		// 监听页面滚动距离
+		onPageScroll(e){
+			this.rect = e.scrollTop
 		},
 		mounted(){
 			this.preference();
-		}
+		},
+		// 计算属性
+		computed: {
+			namepage() {
+				if(this.rect > this.menutop){
+					this.is_fixed = true
+				}else{
+					this.is_fixed = false
+				}
+			}
+		},
 	}
 </script>
 
 <style scoped="scoped">
 	.contenting{
 		margin: 0 15rpx;
+	}
+	.is_fixed{
+		position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
 	}
 </style>

@@ -7,10 +7,10 @@
 					<text>{{synthesize}}</text>
 					<image src="../../../static/coen/paixu.png" mode="widthFix"></image>
 				</view>
-				<view class="delica-grow">销量高</view>
-				<view class="delica-grow">速度快</view>
-				<view class="delica-grow">津贴联盟</view>
-				<view class="delica-list delica-right">
+				<view class="delica-grow" @click="sales()">销量高</view>
+				<view class="delica-grow" @click="sales()">速度快</view>
+				<view class="delica-grow" @click="sales()">津贴联盟</view>
+				<view class="delica-list delica-right" @click="scReen()">
 					<text>筛选</text>
 					<image src="../../../static/coen/shaixuan.png" mode=""></image>
 				</view>
@@ -125,10 +125,12 @@
 			multiple(){
 				this.drop = true;
 				this.backOne();
+				this.sortmen = false;
 			},
 			sortClick(name,index){
 				this.synthesize = name;
 				this.num = index;
+				this.backClic();
 			},
 			backOne(){
 				setTimeout(()=>{
@@ -137,7 +139,16 @@
 			},
 			backClic(){
 				this.ying = false;
-				
+				this.drop = false;
+				this.sortmen = false;
+			},
+			sales(){
+				this.backClic()
+			},
+			scReen(){
+				this.drop = false;
+				this.sortmen = true;
+				this.backOne();
 			}
 		}
 	}

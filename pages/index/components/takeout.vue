@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view style="height: 1400rpx;">
 		内容
 	</view>
 </template>
