@@ -21,7 +21,7 @@
 	// 引入封装的api接口
 	import {listing} from '../../api/api.js'
 	//引入请求地址
-	import {getpreferurl} from '../../api/request.js'
+	import {getpreferurl,wxshopurl} from '../../api/request.js'
 	
 	export default {
 		components: {
